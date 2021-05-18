@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Description</key>
+    <string>Recipe description</string>
+    <key>Identifier</key>
+    <string>com.github.w0de.autopkg.download.DevSpace</string>
+    <key>Input</key>
+    <dict>
+      <key>NAME</key>
+      <string>DevSpace</string>
+    </dict>
+    <key>MiniumumVersion</key>
+    <string>1.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>GitHubReleasesInfoProvider</string>
+            <key>Arguments</key>
+            <dict>
+                <key>asset_regex</key>
+                <string>^devspace-darwin-amd64$</string>
+                <key>github_repo</key>
+                <string>devspace/devspace</string>
+                <key>include_prereleases</key>
+                <string>False</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+      </array>
+  </dict>
+</plist>

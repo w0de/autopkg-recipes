@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Description</key>
+    <string>Downloads the latest version of DevSpace and imports into Munki.</string>
+    <key>Identifier</key>
+    <string>com.github.w0de.autopkg.munki.DevSpace</string>
+    <key>Input</key>
+    <dict>
+      <key>MUNKI_REPO_SUBDIR</key>
+      <string>apps</string>
+      <key>NAME</key>
+      <string>DevSpace</string>
+      <key>pkginfo</key>
+      <dict>
+        <key>installer_type</key>
+        <string>copy_from_dmg</string>
+        <key>installcheck_script</key>
+        <string>
+if test -f /usr/local/bin/devspace; then
+  version=$(/usr/local/bin/devspace --version | awk '{print $3}')
+  if [ ${version:-0} &lt; %version% ]; then
+      exit 0
+  else
+      exit 1
+  fi
+else
+  exit 0
+fi
+    </string>
+        <key>installs</key>
+        <array>
+          <dict>
+            <key>path</key>
+            <string>/usr/local/bin/devspace</string>
+            <key>type</key>
+            <string>file</string>
+          </dict>
+        </array>
+        <key>items_to_copy</key>
+        <array>
+        <dict>
+            <key>destination_path</key>
+            <string>/usr/local/bin/devspace</string>
+            <key>source_item</key>
+            <string>devspace-darwin-amd64</string>
+        </dict>
+        </array>
+        <key>catalogs</key>
+        <array>
+          <string>testing</string>
+        </array>
+        <key>description</key>
+        <string>DevSpace is an open-source developer tool for Kubernetes that lets you develop and deploy cloud-native software faster..</string>
+        <key>developer</key>
+        <string>DevSpace</string>
+        <key>display_name</key>
+        <string>DevSpace</string>
+        <key>name</key>
+        <string>%NAME%</string>
+        <key>unattended_install</key>
+        <true/>
+      </dict>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.0</string>
+    <key>ParentRecipe</key>
+    <string>com.github.w0de.autopkg.download.DevSpace</string>
+    <key>Process</key>
+    <array>
+      <dict>
+        <key>Processor</key>
+        <string>DmgCreator</string>
+        <key>Arguments</key>
+        <dict>
+          <key>dmg_root</key>
+          <string>%pkg_path%</string>
+          <key>dmg_path</key>
+          <string>%RECIPE_CACHE_DIR%/%NAME%_Install-%version%.dmg</string>
+        </dict>
+        <key>Processor</key>
+        <string>MunkiImporter</string>
+        <key>Arguments</key>
+        <dict>
+          <key>pkg_path</key>
+          <string>%pathname%</string>
+          <key>repo_subdirectory</key>
+          <string>%MUNKI_REPO_SUBDIR%</string>
+        </dict>
+      </dict>
+    </array>
+  </dict>
+</plist>
