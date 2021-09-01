@@ -30,7 +30,7 @@ class InjectEnvSecrets(PlistEditor):
     @property
     def prefix(self):
         self.env.get("ENV_SECRETS_PREFIX", f"AUTOPKG_{self.env['NAME'].upper()}_")
-        
+
     @property
     def secrets(self):
         self.env.get("INJECTABLE_SECRETS")
@@ -39,7 +39,7 @@ class InjectEnvSecrets(PlistEditor):
     def hard_fail(self):
         self.env.get("HARD_FAIL_SECRETS_INJECTION")
 
-    def inject(self):
+    def inject_secrets(self):
         for key in self.secrets:
             env_key = f"{self.prefix}_{key}"
             env_secret = os.environ.get(env_key)
@@ -54,4 +54,4 @@ class InjectEnvSecrets(PlistEditor):
         if not self.secrets:
             return
 
-        self.inject()
+        self.inject_secrets()
