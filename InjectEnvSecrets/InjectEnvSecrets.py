@@ -33,7 +33,7 @@ class InjectEnvSecrets(PlistEditor):
 
     @property
     def secrets(self):
-        return self.env.get("injectable_secrets", [])
+        return self.env.get("injectable_secrets")
 
     @property
     def hard_fail(self):
@@ -53,5 +53,8 @@ class InjectEnvSecrets(PlistEditor):
     def main(self):
         if not self.secrets:
             return None
+
+        if not isinstance(self.secrets, list):
+            raise ProcessorError(f"'injectable_secrets' must be an array if set.")
 
         self.inject_secrets()
