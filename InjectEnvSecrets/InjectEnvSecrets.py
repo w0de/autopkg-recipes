@@ -6,20 +6,20 @@ from autopkglib import PlistEditor, ProcessorError
 class InjectEnvSecrets(PlistEditor):
     description = __doc__
     input_variables = {
-        "INJECTABLE_SECRETS": {
+        "injectable_secrets": {
             "required": False,
             "description": (
                 "List of names of secrets to find in env and inject."
             ),
         },
-        "HARD_FAIL_SECRETS_INJECTION": {
+        "hard_fail_secrets_injection": {
             "required": False,
             "default": True,
             "description": (
                 "Hard fail if secret cannot be found."
             )
         },
-        "ENV_SECRETS_PREFIX": {
+        "env_secrets_prefix": {
             "required": False,
             "description": (
                 "Prefix for secrets in env. Ie, $<PREFIX>_<SECRET_NAME>. Defaults to $AUTOPKG_<UPPERCASE_RECIPE_NAME>"
@@ -29,15 +29,15 @@ class InjectEnvSecrets(PlistEditor):
 
     @property
     def prefix(self):
-        self.env.get("ENV_SECRETS_PREFIX", f"AUTOPKG_{self.env['NAME'].upper()}_")
+        self.env.get("env_secrets_prefix", f"AUTOPKG_{self.env['NAME'].upper()}_")
 
     @property
     def secrets(self):
-        self.env.get("INJECTABLE_SECRETS")
+        self.env.get("injectable_secrets", [])
 
     @property
     def hard_fail(self):
-        self.env.get("HARD_FAIL_SECRETS_INJECTION")
+        self.env.get("hard_fail_secrets_injection")
 
     def inject_secrets(self):
         for key in self.secrets:
@@ -51,6 +51,9 @@ class InjectEnvSecrets(PlistEditor):
             self.env[key] = env_secret
 
     def main(self):
+        print(self.env.get("INJECTABLE_SECRETS"))
+        print("hello")
+        print(self.env.get("injectable_secrets"))
         if not self.secrets:
             return
 
