@@ -7,7 +7,7 @@ class InjectEnvSecrets(PlistEditor):
     description = __doc__
     input_variables = {
         "secrets": {
-            "required": True,
+            "required": False,
             "description": (
                 "List of names of secrets to find in env and inject."
             ),
