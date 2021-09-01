@@ -14,7 +14,7 @@ class InjectEnvSecrets(PlistEditor):
         },
         "HARD_FAIL_SECRETS_INJECTION": {
             "required": False,
-            "default": False,
+            "default": True,
             "description": (
                 "Hard fail if secret cannot be found."
             )
