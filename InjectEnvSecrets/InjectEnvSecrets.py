@@ -54,6 +54,7 @@ class InjectEnvSecrets(PlistEditor):
         print(self.env.get("INJECTABLE_SECRETS"))
         print("hello")
         print(self.env.get("injectable_secrets"))
+        print(self.secrets)
         if not self.secrets:
             return
 
