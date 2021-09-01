@@ -29,7 +29,7 @@ class InjectEnvSecrets(PlistEditor):
 
     @property
     def prefix(self):
-        return self.env.get("injectable_secrets_env_prefix", f"AUTOPKG_{self.env['NAME'].upper()}_")
+        return self.env.get("injectable_secrets_env_prefix", f"AUTOPKG_{self.env['NAME'].upper()}")
 
     @property
     def secrets(self):
