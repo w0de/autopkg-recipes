@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import sys
 from autopkglib import PlistEditor
@@ -22,5 +22,5 @@ class InjectEnvSecrets(PlistEditor):
     }
 
     def main(self):
-        print self.env
+        print(self.env)
         sys.exit(1)
