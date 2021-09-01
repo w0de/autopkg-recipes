@@ -19,7 +19,7 @@ class InjectEnvSecrets(PlistEditor):
                 "Hard fail if secret cannot be found."
             )
         },
-        "env_secrets_prefix": {
+        "injectable_secrets_env_prefix": {
             "required": False,
             "description": (
                 "Prefix for secrets in env. Ie, $<PREFIX>_<SECRET_NAME>. Defaults to $AUTOPKG_<UPPERCASE_RECIPE_NAME>"
@@ -29,33 +29,29 @@ class InjectEnvSecrets(PlistEditor):
 
     @property
     def prefix(self):
-        self.env.get("env_secrets_prefix", f"AUTOPKG_{self.env['NAME'].upper()}_")
+        return self.env.get("injectable_secrets_env_prefix", f"AUTOPKG_{self.env['NAME'].upper()}_")
 
     @property
     def secrets(self):
-        self.env.get("injectable_secrets", [])
+        return self.env.get("injectable_secrets", [])
 
     @property
     def hard_fail(self):
-        self.env.get("hard_fail_secrets_injection")
+        return self.env.get("hard_fail_secrets_injection")
 
     def inject_secrets(self):
         for key in self.secrets:
             env_key = f"{self.prefix}_{key}"
             env_secret = os.environ.get(env_key)
-            if key is None and self.hard_fail:
+            if env_secret is None and self.hard_fail:
                 raise ProcessorError(f"Could not find secret {key} for recipe {self.env['NAME']} - looked in environment at {env_key}")
-            elif key is None:
+            elif env_secret is None:
                 continue
 
             self.env[key] = env_secret
 
     def main(self):
-        print(self.env.get("INJECTABLE_SECRETS"))
-        print("hello")
-        print(self.env.get("injectable_secrets"))
-        print(self.secrets)
         if not self.secrets:
-            return
+            return None
 
         self.inject_secrets()
