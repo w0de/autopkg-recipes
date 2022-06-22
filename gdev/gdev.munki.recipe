@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ParentRecipe</key>
+  <string>com.github.w0de.download.gdev</string>
+	<key>Description</key>
+	<string>Gusto's gdev command line utility.</string>
+	<key>Identifier</key>
+	<string>com.github.w0de.munki.gdev</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>gdev</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>unattended_install</key>
+			<true/>
+			<key>display_name</key>
+			<string>gdev</string>
+			<key>developer</key>
+			<string>Ethan Hall</string>
+			<key>category</key>
+			<string>Engineering</string>
+			<key>catalogs</key>
+			<array>
+				<string>import</string>
+			</array>
+		</dict>
+	</dict>
+	<key>MiniumumVersion</key>
+	<string>1.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>utilities</string>
+				<key>version_comparison_key</key>
+				<string>CFBundleVersion</string>
+				<key>pkg_path</key>
+        <string>%pathname%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
