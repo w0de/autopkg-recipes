@@ -46,8 +46,8 @@
 			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
-				<key>prefetch_filename</key>
-				<string>True</string>
+				<key>filename</key>
+				<string>gdev-%version%.pkg</string>
 				<key>url</key>
 				<string>%asset_url%</string>
 				<key>request_headers</key>
