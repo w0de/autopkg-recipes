@@ -47,7 +47,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>prefetch_filename</key>
-				</true>
+				<string>True</string>
 				<key>url</key>
 				<string>%asset_url%</string>
 				<key>request_headers</key>
