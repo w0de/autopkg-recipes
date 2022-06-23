@@ -40,6 +40,9 @@
 				<key>github_repo</key>
 				<string>gusto/gdev</string>
 			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
 			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
