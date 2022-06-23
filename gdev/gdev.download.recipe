@@ -52,7 +52,7 @@
 				<dict>
 					<key>Authorization</key>
 					<string>token %GITHUB_TOKEN%</string>
-				</array>
+				</dict>
 			</dict>
 		</dict>
 		<dict>
