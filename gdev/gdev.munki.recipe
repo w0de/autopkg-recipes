@@ -17,11 +17,13 @@
 			<key>unattended_install</key>
 			<true/>
 			<key>display_name</key>
-			<string>gdev</string>
+			<string>gdev (Gusto developer CLI)</string>
 			<key>developer</key>
 			<string>Ethan Hall</string>
 			<key>category</key>
 			<string>Engineering</string>
+			<key>description</key>
+			<string>%release_notes%</string>
 			<key>catalogs</key>
 			<array>
 				<string>import</string>

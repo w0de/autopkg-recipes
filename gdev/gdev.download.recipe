@@ -48,6 +48,10 @@
 			<dict>
 				<key>url</key>
 				<string>%asset_url%</string>
+				<key>request_headers</key>
+				<array>
+					<string>Authorization: token %GITHUB_TOKEN%</string>
+				</array>
 			</dict>
 		</dict>
 		<dict>
