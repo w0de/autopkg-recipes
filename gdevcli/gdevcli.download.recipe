@@ -35,6 +35,10 @@
 				<string>%asset_url%</string>
 				<key>filename</key>
 				<string>gdev-v%version%.pkg</string>
+				<key>curl_opts</key>
+				<array>
+					<string>-L</string>
+				</array>
 				<key>request_headers</key>
 				<dict>
 					<key>Authorization</key>
