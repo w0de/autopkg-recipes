@@ -31,6 +31,8 @@
 			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
+				<key>url</key>
+				<string>%asset_url%</string>
 				<key>filename</key>
 				<string>gdev-v%version%.pkg</string>
 				<key>request_headers</key>
