@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>ParentRecipe</key>
-  <string>com.github.w0de.download.gdev</string>
+  <string>com.github.w0de.download.gdevcli</string>
 	<key>Description</key>
 	<string>Gusto's gdev command line utility.</string>
 	<key>Identifier</key>
-	<string>com.github.w0de.munki.gdev</string>
+	<string>com.github.w0de.munki.gdevcli</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>gdev</string>
+		<string>gdevcli</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>unattended_install</key>
@@ -42,7 +42,7 @@
 				<key>version_comparison_key</key>
 				<string>CFBundleVersion</string>
 				<key>pkg_path</key>
-        <string>%pathname%</string>
+        <string>%pathname%.pkg</string>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>

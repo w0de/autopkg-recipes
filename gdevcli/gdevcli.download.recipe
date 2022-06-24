@@ -5,26 +5,11 @@
 	<key>Description</key>
 	<string>Gusto's gdev command line utility.</string>
 	<key>Identifier</key>
-	<string>com.github.w0de.download.gdev</string>
+	<string>com.github.w0de.download.gdevcli</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>gdev</string>
-		<key>pkginfo</key>
-		<dict>
-			<key>unattended_install</key>
-			<true/>
-			<key>display_name</key>
-			<string>gdev</string>
-			<key>developer</key>
-			<string>Ethan Hall</string>
-			<key>category</key>
-			<string>Engineering</string>
-			<key>catalogs</key>
-			<array>
-				<string>import</string>
-			</array>
-		</dict>
+		<string>gdevcli</string>
 	</dict>
 	<key>MiniumumVersion</key>
 	<string>1.0</string>
@@ -46,8 +31,6 @@
 			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
-				<key>filename</key>
-				<string>gdev-%version%.pkg</string>
 				<key>url</key>
 				<string>%asset_url%</string>
 				<key>request_headers</key>
@@ -57,6 +40,17 @@
 				</dict>
 			</dict>
 		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>Copier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>source_path</key>
+				<string>%pathname%</string>
+				<key>request_headers</key>
+				<key>destination_path</key>
+				<string>%pathname%.pkg</string>
+			</dict>
 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
