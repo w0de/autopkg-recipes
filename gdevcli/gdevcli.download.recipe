@@ -31,8 +31,6 @@
 			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
-				<key>filename</key>
-				<string>gdev-v%version%.pkg</string>
 				<key>request_headers</key>
 				<dict>
 					<key>Authorization</key>
