@@ -35,14 +35,12 @@
 				<string>%asset_url%</string>
 				<key>filename</key>
 				<string>gdev-v%version%.pkg</string>
-				<key>curl_opts</key>
-				<array>
-					<string>-L</string>
-				</array>
 				<key>request_headers</key>
 				<dict>
 					<key>Authorization</key>
 					<string>token %GITHUB_TOKEN%</string>
+					<key>Accept</key>
+					<string>application/octet-stream</string>
 				</dict>
 			</dict>
 		</dict>
