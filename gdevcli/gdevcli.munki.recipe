@@ -41,7 +41,6 @@
 			<dict>
 				<key>source_path</key>
 				<string>%pathname%</string>
-				<key>request_headers</key>
 				<key>destination_path</key>
 				<string>%pathname%.pkg</string>
 			</dict>
