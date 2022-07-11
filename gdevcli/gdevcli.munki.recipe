@@ -22,8 +22,6 @@
 			<string>Ethan Hall</string>
 			<key>category</key>
 			<string>Engineering</string>
-			<key>description</key>
-			<string>%release_notes%</string>
 			<key>catalogs</key>
 			<array>
 				<string>import</string>
@@ -43,6 +41,11 @@
 				<string>CFBundleVersion</string>
 				<key>pkg_path</key>
         <string>%pathname%</string>
+				<key>pkginfo</key>
+				<dict>
+					<key>description</key>
+					<string>%release_notes%</string>
+				</dict>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
