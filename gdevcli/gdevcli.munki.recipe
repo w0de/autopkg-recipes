@@ -35,6 +35,18 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>description</key>
+					<string>%release_notes%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>repo_subdirectory</key>
 				<string>utilities</string>
 				<key>version_comparison_key</key>
@@ -42,10 +54,6 @@
 				<key>pkg_path</key>
         <string>%pathname%</string>
 				<key>pkginfo</key>
-				<dict>
-					<key>description</key>
-					<string>%release_notes%</string>
-				</dict>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
