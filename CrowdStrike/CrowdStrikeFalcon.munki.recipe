@@ -249,15 +249,24 @@ writelog "*****  Install CrowdStrike Process:  COMPLETE  *****"</string>
             <string>PathDeleter</string>
         </dict>
         <dict>
-          <key>Processor</key>
-    			<string>com.github.keeleysam.recipes.GoogleTalkPlugin/MunkiPkginfoReceiptsEditor</string>
-    			<key>Arguments</key>
-    			<dict>
-    				<key>pkg_ids_set_optional_true</key>
-    				<array>
-    					<string>com.crowdstrike.falcon.sensor.kext</string>
-    				</array>
-    			</dict>
+            <key>Arguments</key>
+            <dict>
+                <key>predicate</key>
+                <string>pkginfo_repo_path == ''</string>
+            </dict>
+            <key>Processor</key>
+            <string>StopProcessingIf</string>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_ids_set_optional_true</key>
+                <array>
+                    <string>com.crowdstrike.falcon.sensor.kext</string>
+                </array>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiOptionalReceiptEditor</string>
         </dict>
       </array>
 </dict>
