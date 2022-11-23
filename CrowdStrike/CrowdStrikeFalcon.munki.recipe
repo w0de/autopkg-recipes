@@ -39,7 +39,7 @@ You must also specify a LICENSE_ID in order to license the Sensor post install. 
             <key>name</key>
             <string>%NAME%</string>
             <key>postinstall_script</key>
-            <string>#!/bin/bash
+			<string>#!/bin/bash
 
 ##################################################
 # Define Variables
@@ -54,66 +54,55 @@ readonly falconctl_old="/Library/CS/falconctl"
 # Log path to write license output to
 readonly log_path="%LICENSE_INSTALL_LOG%"
 
+if [ ! -d $(/usr/bin/dirname $log_path) ]; then
+	/bin/mkdir -p $(/usr/bin/dirname $log_path)
+fi
+
 # Write to log
 writelog () {
     /bin/echo "${1}"
-    /bin/echo "${1}" >> "$logpath"
+    /bin/echo "$(/bin/date) ${1}" &gt;&gt; "$log_path"
 }
 
 ##################################################
 
 writelog "*****  Install CrowdStrike Process:  START  *****"
 
-# Bits staged...
-
 # Check which location exists
 if  [[ -e "${falconctl_new}" &amp;&amp; -e "${falconctl_old}" ]]; then
-
     # Multiple versions installed
     writelog "ERROR:  Multiple versions installed!"
     writelog "*****  Install CrowdStrike process:  FAILED  *****"
     exit 2
-
 elif  [[ -e "${falconctl_new}" ]]; then
-
     # Apply License
     writelog "Applying License..."
     exitStatus=$( "${falconctl_new}" license "${licenseid}" 2&gt;&amp;1 )
     exitCode=$?
-
 elif  [[ -e "${falconctl_old}" ]]; then
-
     # Apply License
     writelog "Applying License..."
     exitStatus=$( "${falconctl_old}" license "${licenseid}" 2&gt;&amp;1 )
     exitCode=$?
-
 else
-
     # Could not find a version
     writelog "ERROR:  Unable to locate falconctl!"
     writelog "*****  Install CrowdStrike process:  FAILED  *****"
     exit 3
-
 fi
 
-# Verify licensing exit code
+customer_id=$( "${falconctl_new}" stats agent_info | grep "customerID" | awk -F ": " '{print $NF}' )
+
 if [[ $exitCode == 0 ]]; then
-
     writelog "License applied successfully!"
-
-elif [[ $exitStatus == "Error: This machine is already licensed" ]]; then
-
+elif [[ ! -z $customer_id ]]; then
     writelog "This machine is already licensed!"
-
 else
-
     writelog "ERROR: License failed to apply!"
     writelog "Exit Code:    ${exitCode}"
     writelog "Exit Status:  ${exitStatus}"
     writelog "*****  Install CrowdStrike process:  FAILED  *****"
     exit 4
-
 fi
 
 writelog "*****  Install CrowdStrike Process:  COMPLETE  *****"</string>
@@ -135,43 +124,6 @@ writelog "*****  Install CrowdStrike Process:  COMPLETE  *****"</string>
             </dict>
             <key>Processor</key>
             <string>FlatPkgUnpacker</string>
-        </dict>
-        <dict>
-            <key>Arguments</key>
-            <dict>
-                <key>destination_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%</string>
-                <key>pkg_payload_path</key>
-                <string>%RECIPE_CACHE_DIR%/unpack/sensor-kext.pkg/Payload</string>
-            </dict>
-            <key>Processor</key>
-            <string>PkgPayloadUnpacker</string>
-        </dict>
-        <dict>
-            <key>Arguments</key>
-            <dict>
-                <key>expected_authority_names</key>
-                <array/>
-                <key>input_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%/Applications/Falcon.app</string>
-                <key>requirement</key>
-                <string>identifier "com.crowdstrike.falcon.App" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = X9E956P446</string>
-                <key>strict_verification</key>
-                <true/>
-            </dict>
-            <key>Processor</key>
-            <string>CodeSignatureVerifier</string>
-        </dict>
-        <dict>
-            <key>Arguments</key>
-            <dict>
-                <key>path_list</key>
-                <array>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%</string>
-                </array>
-            </dict>
-            <key>Processor</key>
-            <string>PathDeleter</string>
         </dict>
         <dict>
             <key>Arguments</key>
