@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ParentRecipe</key>
+  <string>com.github.w0de.download.fluent-bit</string>
+	<key>Description</key>
+	<string>Fluent Bit is a super fast, lightweight, and highly scalable logging and metrics processor and forwarder.</string>
+	<key>Identifier</key>
+	<string>com.github.w0de.munki.fluent-bit</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>fluent-bit</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>unattended_install</key>
+			<true/>
+			<key>display_name</key>
+			<string>fluent-bit</string>
+			<key>developer</key>
+			<string>fluentbit.io</string>
+			<key>category</key>
+			<string>Utilities</string>
+			<key>catalogs</key>
+			<array>
+				<string>import</string>
+			</array>
+		</dict>
+	</dict>
+	<key>MiniumumVersion</key>
+	<string>1.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>description</key>
+					<string>%release_notes%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>utilities</string>
+				<key>version_comparison_key</key>
+				<string>CFBundleVersion</string>
+				<key>pkg_path</key>
+        <string>%pathname%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
