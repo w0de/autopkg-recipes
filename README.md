@@ -4,7 +4,7 @@ This repo contains [AutoPkg](https://github.com/autopkg/autopkg) recipes used to
 
 ## fluent-bit
 
-Requires the `RELEASE_REPO` input variable.
+Requires the `RELEASE_REPO` and `GITHUB_TOKEN` input variables.
 
 ## DevSpace
 
