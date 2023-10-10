@@ -11,7 +11,7 @@
 		<key>NAME</key>
 		<string>fluent-bit-config</string>
 		<key>RELEASE_REPO</key>
-		<string>faire/it-cpe-fluentbit</string>
+		<string>Faire/it-cpe-fluentbit</string>
 	</dict>
 	<key>MiniumumVersion</key>
 	<string>1.0</string>
