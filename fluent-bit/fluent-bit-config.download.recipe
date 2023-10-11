@@ -14,8 +14,6 @@
 		<string>Faire/it-cpe-fluentbit</string>
 		<key>ARCHITECTURE</key>
 		<string>x86_64</string>
-		<key>OPENSSL_VERSION</key>
-		<string></string>
 	</dict>
 	<key>MiniumumVersion</key>
 	<string>1.0</string>
