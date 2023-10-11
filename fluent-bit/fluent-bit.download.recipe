@@ -12,8 +12,8 @@
 		<string>fluent-bit</string>
 		<key>RELEASE_REPO</key>
 		<string>Faire/it-cpe-fluentbit</string>
-		<key>ARCHITECTURE</key>
-		<string>x86_64</string>
+		<key>OPENSSL_VERSION</key>
+		<string></string>
 	</dict>
 	<key>MiniumumVersion</key>
 	<string>1.0</string>
@@ -38,7 +38,7 @@
 				<key>url</key>
 				<string>%asset_url%</string>
 				<key>filename</key>
-				<string>it-cpe-fluent-bit-logger-v%version%-%ARCHITECTURE%.pkg</string>
+				<string>it-cpe-fluent-bit-logger-v%version%-%ARCHITECTURE%-%OPENSSL_VERSION%.pkg</string>
 				<key>request_headers</key>
 				<dict>
 					<key>Authorization</key>
