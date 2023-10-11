@@ -12,6 +12,8 @@
 		<string>fluent-bit-config</string>
 		<key>RELEASE_REPO</key>
 		<string>Faire/it-cpe-fluentbit</string>
+		<key>ARCHITECTURE</key>
+		<string>x86_64</string>
 	</dict>
 	<key>MiniumumVersion</key>
 	<string>1.0</string>
@@ -36,7 +38,7 @@
 				<key>url</key>
 				<string>%asset_url%</string>
 				<key>filename</key>
-				<string>it-cpe-fluent-bit-config-v%version%.pkg</string>
+				<string>it-cpe-fluent-bit-config-v%version%-%ARCHITECTURE%.pkg</string>
 				<key>request_headers</key>
 				<dict>
 					<key>Authorization</key>
