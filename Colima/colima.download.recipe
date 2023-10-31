@@ -1,6 +1,7 @@
 ---
 Description: Recipe description
 Identifier: com.github.w0de.download.colima
+MinimumVersion: "0.4.4"
 Input:
   NAME: colima
   ARCHITECTURE: arm64

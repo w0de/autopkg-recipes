@@ -1,0 +1,24 @@
+---
+Description: Recipe description
+Identifier: com.github.w0de.munki.colima
+MinimumVersion: "0.4.4"
+Input:
+  NAME: colima
+  pkginfo:
+    unattended_install: true
+    display_name: Colima
+    developer: abiosoft
+    supported_architectures:
+      - "%ARCHITECTURE%"
+    catalogs:
+      - testing
+ParentRecipe: com.github.w0de.download.colima
+Process:
+  - Arguments:
+      additional_pkginfo:
+        description: "%release_notes%"
+    Processor: MunkiPkginfoMerger
+  - Arguments:
+      repo_subdirectory: Development
+      pkg_path: "%pathname%"
+    Processor: MunkiImporter
