@@ -1,0 +1,14 @@
+Description: Recipe description
+Identifier: com.github.w0de.download.colima
+Input:
+  NAME: colima
+  ARCHITECTURE: arm64
+Process:
+- Arguments:
+    asset_regex: colima-Darwin-%ARCHITECTURE%
+    github_repo: abiosoft/colima
+  Processor: GitHubReleasesInfoProvider
+- Arguments:
+    url: %asset_url%
+    filename: colima-Darwin-arm64-%version%
+  Processor: URLDownloader
