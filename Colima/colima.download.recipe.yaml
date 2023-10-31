@@ -7,10 +7,18 @@ Input:
   ARCHITECTURE: arm64
 Process:
   - Arguments:
+      pkgroot: "%RECIPE_CACHE_DIR%/colima-dmg"
+    Processor: PkgRootCreator
+  - Arguments:
       asset_regex: colima-Darwin-%ARCHITECTURE%
       github_repo: abiosoft/colima
     Processor: GitHubReleasesInfoProvider
   - Arguments:
       url: "%asset_url%"
-      filename: "colima-Darwin-arm64-%version%"
+      filename: "colima-Darwin-%ARCHITECTURE%-%version%"
+      download_dir: "%RECIPE_CACHE_DIR%/colima-dmg"
     Processor: URLDownloader
+  - Arguments:
+      dmg_root: "%RECIPE_CACHE_DIR%/colima-dmg"
+      dmg_path: "%RECIPE_CACHE_DIR%/colima-Darwin-%ARCHITECTURE%-%version%.dmg"
+    Processor: DmgCreator
