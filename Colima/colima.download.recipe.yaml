@@ -13,8 +13,8 @@ Process:
   - Arguments:
       pkgroot: "%RECIPE_CACHE_DIR%/pkg"
       pkgdirs:
-        usr/local/bin: "0666"
-        Library/LaunchAgents: "755"
+        usr/local/bin: "777"
+        Library/LaunchAgents: "777"
     Processor: PkgRootCreator
   - Arguments:
       url: "%asset_url%"
@@ -58,7 +58,15 @@ Process:
         version: "%version%"
         scripts: "%RECIPE_CACHE_DIR%/scripts"
         chown:
+          - path: usr/local/bin
+            user: root
+            group: wheel
+            mode: "755"
           - path: usr/local/bin/colima
+            user: root
+            group: wheel
+            mode: "755"
+          - path: Library/LaunchAgents
             user: root
             group: wheel
             mode: "755"
