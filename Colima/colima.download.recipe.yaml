@@ -63,4 +63,20 @@ Process:
             user: root
             group: wheel
             mode: "755"
+          - path: usr/local/bin/lima
+            user: root
+            group: wheel
+            mode: "755"
+          - path: usr/share
+            user: root
+            group: wheel
+            mode: "755"
+          - path: usr/share/lima
+            user: root
+            group: wheel
+            mode: "755"
+          - path: usr/share/doc
+            user: root
+            group: wheel
+            mode: "755"
     Processor: PkgCreator
