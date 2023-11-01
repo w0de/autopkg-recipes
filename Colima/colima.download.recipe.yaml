@@ -28,11 +28,11 @@ Process:
     Processor: FlatPkgUnpacker
   - Arguments:
       source: "%RECIPE_CACHE_DIR%/pkg/share"
-      destination: "%RECIPE_CACHE_DIR%/pkg/usr/share"
+      target: "%RECIPE_CACHE_DIR%/pkg/usr/share"
     Processor: FileMover
   - Arguments:
       source: "%RECIPE_CACHE_DIR%/pkg/bin"
-      destination: "%RECIPE_CACHE_DIR%/pkg/usr/local/bin"
+      target: "%RECIPE_CACHE_DIR%/pkg/usr/local/bin"
     Processor: FileMover
   - Arguments:
       asset_regex: colima-Darwin-%ARCHITECTURE%
