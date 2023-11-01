@@ -12,46 +12,10 @@ Input:
       - "%ARCHITECTURE%"
     catalogs:
       - testing
-    installer_type: copy_from_dmg
-    items_to_copy:
-      - destination_item: /usr/local/bin/colima
-        source_item: "colima-Darwin-%ARCHITECTURE%-%version%"
-        group: wheel
-        user: root
-        mode: "755"
-    postinstall_script: |
-      #!/bin/zsh
-
-      cat > /Library/LaunchAgents/com.github.abiosoft.colima.plist <<-EOF
-      <?xml version="1.0" encoding="UTF-8"?>
-      <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-      <plist version="1.0">
-        <dict>
-          <key>Label</key>
-          <string>com.github.abiosoft.colima</string>
-          <key>Program</key>
-          <string>/usr/local/bin/colima-start-fg</string>
-          <key>RunAtLoad</key>
-          <true/>
-          <key>KeepAlive</key>
-          <false/>
-        </dict>
-      </plist>
-      EOF
-
-      /bin/launchctl load -w /Library/LaunchAgents/com.github.abiosoft.colima.plist
     postuninstall_script: |
       #!/bin/zsh
 
-      if test -f /usr/local/bin/colima; then
-        /bin/rm -f /usr/local/bin/colima
-      fi
-
-      if test -f /Library/LaunchAgents/com.github.abiosoft.colima.plist; then
-        /bin/launchctl unload -w /Library/LaunchAgents/com.github.abiosoft.colima.plist
-        /bin/rm -f /Library/LaunchAgents/com.github.abiosoft.colima.plist
-      fi
-
+      /bin/launchctl unload -w /Library/LaunchAgents/com.github.abiosoft.colima.plist
       exit 0
 ParentRecipe: com.github.w0de.download.colima
 Process:
@@ -61,5 +25,5 @@ Process:
     Processor: MunkiPkginfoMerger
   - Arguments:
       repo_subdirectory: Development
-      pkg_path: "%RECIPE_CACHE_DIR%/colima-Darwin-%ARCHITECTURE%-%version%.dmg"
+      pkg_path: "%RECIPE_CACHE_DIR%/colima-Darwin-%ARCHITECTURE%-%version%.pkg"
     Processor: MunkiImporter

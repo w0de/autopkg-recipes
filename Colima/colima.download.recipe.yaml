@@ -12,10 +12,53 @@ Process:
     Processor: GitHubReleasesInfoProvider
   - Arguments:
       url: "%asset_url%"
-      filename: "colima-Darwin-%ARCHITECTURE%-%version%"
-      download_dir: "%RECIPE_CACHE_DIR%/colima-raw"
+      filename: "colima"
+      download_dir: "%RECIPE_CACHE_DIR%/colima-raw/usr/local/bin"
     Processor: URLDownloader
   - Arguments:
-      dmg_root: "%RECIPE_CACHE_DIR%/colima-raw"
-      dmg_path: "%RECIPE_CACHE_DIR%/colima-Darwin-%ARCHITECTURE%-%version%.dmg"
-    Processor: DmgCreator
+      file_path: "%RECIPE_CACHE_DIR%/colima-raw/Library/LaunchAgents/com.github.abiosoft.colima.plist"
+      file_mode: "644"
+      file_content: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+        <plist version="1.0">
+          <dict>
+            <key>Label</key>
+            <string>com.github.abiosoft.colima</string>
+            <key>Program</key>
+            <string>/usr/local/bin/colima</string>
+            <key>RunAtLoad</key>
+            <true/>
+            <key>KeepAlive</key>
+            <false/>
+          </dict>
+        </plist>
+    Processor: FileCreator
+  - Arguments:
+      file_path: "%RECIPE_CACHE_DIR%/colima-scripts/postinstall"
+      file_mode: "755"
+      file_content: |
+        #!/bin/zsh
+
+        /bin/launchctl load -w /Library/LaunchAgents/com.github.abiosoft.colima.plist
+        exit 0
+    Processor: FileCreator
+  - Arguments:
+      pkg_request:
+        pkgroot: "%RECIPE_CACHE_DIR%/colima-raw"
+        pkgdir: "%RECIPE_CACHE_DIR%"
+        pkgname: "colima-Darwin-%ARCHITECTURE%-%version%.pkg"
+        pkgtype: flat
+        id: com.github.abiosoft.colima
+        version: "%version%"
+        scripts: "%RECIPE_CACHE_DIR%/colima-scripts"
+        chown:
+          - path: "usr/local/bin/colima"
+            user: root
+            group: wheel
+            mode: "755"
+          - path: Library/LaunchAgents/com.github.abiosoft.colima.plist
+            user: root
+            group: wheel
+            mode: "644"
+    Processor: PkgCreator
