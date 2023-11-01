@@ -10,6 +10,7 @@ Process:
       pkgroot: "%RECIPE_CACHE_DIR%/pkg"
       pkgdirs:
         usr/local: "777"
+        usr/local/lima: "777"
     Processor: PkgRootCreator
   - Arguments:
       asset_regex: "lima-[\\.\\d]*-Darwin-%ARCHITECTURE%.tar.gz"
@@ -28,7 +29,7 @@ Process:
     Processor: Unarchiver
   - Arguments:
       source: "%RECIPE_CACHE_DIR%/pkg/share"
-      target: "%RECIPE_CACHE_DIR%/pkg/usr/share"
+      target: "%RECIPE_CACHE_DIR%/pkg/usr/local/lima/share"
     Processor: FileMover
   - Arguments:
       source: "%RECIPE_CACHE_DIR%/pkg/bin"
@@ -70,11 +71,15 @@ Process:
             user: root
             group: wheel
             mode: "755"
-          - path: usr/share/lima
+          - path: usr/local/lima
             user: root
             group: wheel
             mode: "755"
-          - path: usr/share/doc
+          - path: usr/local/lima/share
+            user: root
+            group: wheel
+            mode: "755"
+          - path: usr/local/lima/doc
             user: root
             group: wheel
             mode: "755"
