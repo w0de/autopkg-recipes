@@ -24,6 +24,7 @@ Process:
       archive_path: "%pathname%"
       destination_path: "%RECIPE_CACHE_DIR%/pkg"
       purge_destination: false
+      archive_format: tar_gzip
     Processor: Unarchiver
   - Arguments:
       source: "%RECIPE_CACHE_DIR%/pkg/share"
