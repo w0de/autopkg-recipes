@@ -67,10 +67,6 @@ Process:
             user: root
             group: wheel
             mode: "755"
-          - path: usr/share
-            user: root
-            group: wheel
-            mode: "755"
           - path: usr/local/lima
             user: root
             group: wheel
