@@ -19,6 +19,8 @@ Process:
     Processor: GitHubReleasesInfoProvider
   - Arguments:
       url: "%asset_url%"
+      request_headers:
+        Accept: application/octet-stream
     Processor: URLDownloader
   - Arguments:
       source_path: "%pathname%"
