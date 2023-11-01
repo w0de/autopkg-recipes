@@ -21,11 +21,10 @@ Process:
         Accept: application/octet-stream
     Processor: URLDownloader
   - Arguments:
-      flat_pkg_path: "%pathname%"
-      skip_payload: true
+      archive_path: "%pathname%"
       destination_path: "%RECIPE_CACHE_DIR%/pkg"
       purge_destination: false
-    Processor: FlatPkgUnpacker
+    Processor: Unarchiver
   - Arguments:
       source: "%RECIPE_CACHE_DIR%/pkg/share"
       target: "%RECIPE_CACHE_DIR%/pkg/usr/share"
