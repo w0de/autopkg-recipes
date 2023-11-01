@@ -53,7 +53,6 @@ Process:
         pkgtype: flat
         id: com.github.abiosoft.colima
         version: "%version%"
-        scripts: "%RECIPE_CACHE_DIR%/pkg/Library/Colima/scripts"
         chown:
           - path: usr/local/bin
             user: root
