@@ -12,7 +12,7 @@ Process:
         usr/local: "777"
     Processor: PkgRootCreator
   - Arguments:
-      asset_regex: lima-*-Darwin-%ARCHITECTURE%.tar.gz
+      asset_regex: "lima-*-Darwin-%ARCHITECTURE%.tar.gz"
       github_repo: lima-vm/lima
     Processor: GitHubReleasesInfoProvider
   - Arguments:
@@ -35,7 +35,7 @@ Process:
       target: "%RECIPE_CACHE_DIR%/pkg/usr/local/bin"
     Processor: FileMover
   - Arguments:
-      asset_regex: colima-Darwin-%ARCHITECTURE%
+      asset_regex: "colima-Darwin-%ARCHITECTURE%"
       github_repo: abiosoft/colima
     Processor: GitHubReleasesInfoProvider
   - Arguments:
