@@ -53,7 +53,7 @@ Process:
       pkg_request:
         pkgroot: "%RECIPE_CACHE_DIR%/pkg"
         pkgdir: "%RECIPE_CACHE_DIR%"
-        pkgname: "colima-Darwin-%ARCHITECTURE%-%version%.pkg"
+        pkgname: "colima-Darwin-%ARCHITECTURE%-%version%"
         pkgtype: flat
         id: com.github.abiosoft.colima
         version: "%version%"
