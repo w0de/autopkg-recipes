@@ -7,16 +7,16 @@ Input:
   ARCHITECTURE: arm64
 Process:
   - Arguments:
-      asset_regex: colima-Darwin-%ARCHITECTURE%
-      github_repo: abiosoft/colima
-    Processor: GitHubReleasesInfoProvider
-  - Arguments:
       pkgroot: "%RECIPE_CACHE_DIR%/pkg"
       pkgdirs:
         usr/local/bin: "777"
         Library/LaunchAgents: "777"
         Library/Colima/scripts: "777"
     Processor: PkgRootCreator
+  - Arguments:
+      asset_regex: colima-Darwin-%ARCHITECTURE%
+      github_repo: abiosoft/colima
+    Processor: GitHubReleasesInfoProvider
   - Arguments:
       url: "%asset_url%"
       filename: "colima"
