@@ -75,7 +75,11 @@ Process:
             user: root
             group: wheel
             mode: "755"
-          - path: usr/local/lima/doc
+          - path: usr/local/lima/share/lima
+            user: root
+            group: wheel
+            mode: "755"
+          - path: usr/local/lima/share/doc
             user: root
             group: wheel
             mode: "755"
