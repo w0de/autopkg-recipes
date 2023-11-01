@@ -24,6 +24,7 @@ Process:
       source_path: "%pathname%"
       destination_path: "%RECIPE_CACHE_DIR%/pkg/usr/local/bin/colima"
       overwrite: true
+    Processor: Copier
   - Arguments:
       file_path: "%RECIPE_CACHE_DIR%/pkg/Library/LaunchAgents/com.github.abiosoft.colima.plist"
       file_mode: "644"
