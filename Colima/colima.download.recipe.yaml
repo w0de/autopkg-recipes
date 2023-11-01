@@ -12,7 +12,7 @@ Process:
         usr/local: "777"
     Processor: PkgRootCreator
   - Arguments:
-      asset_regex: "lima-*-Darwin-%ARCHITECTURE%.tar.gz"
+      asset_regex: "lima-[\.\d]*-Darwin-%ARCHITECTURE%.tar.gz"
       github_repo: lima-vm/lima
     Processor: GitHubReleasesInfoProvider
   - Arguments:
