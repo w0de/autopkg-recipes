@@ -9,13 +9,11 @@ Process:
   - Arguments:
       pkgroot: "%RECIPE_CACHE_DIR%/pkg"
       pkgdirs:
-        usr/local/bin: "777"
-        Library/LaunchAgents: "777"
-        Library/Colima/scripts: "777"
+        usr/local: "777"
     Processor: PkgRootCreator
   - Arguments:
-      asset_regex: colima-Darwin-%ARCHITECTURE%
-      github_repo: abiosoft/colima
+      asset_regex: lima-*-Darwin-%ARCHITECTURE%.tar.gz
+      github_repo: lima-vm/lima
     Processor: GitHubReleasesInfoProvider
   - Arguments:
       url: "%asset_url%"
@@ -23,10 +21,30 @@ Process:
         Accept: application/octet-stream
     Processor: URLDownloader
   - Arguments:
-      source_path: "%pathname%"
-      destination_path: "%RECIPE_CACHE_DIR%/pkg/usr/local/bin/colima"
-      overwrite: true
-    Processor: Copier
+      flat_pkg_path: "%pathname%"
+      skip_payload: true
+      destination_path: "%RECIPE_CACHE_DIR%/pkg"
+      purge_destination: false
+    Processor: PkgExtractor
+  - Arguments:
+      source: "%RECIPE_CACHE_DIR%/pkg/share"
+      destination: "%RECIPE_CACHE_DIR%/pkg/usr/share"
+    Processor: FileMover
+  - Arguments:
+      source: "%RECIPE_CACHE_DIR%/pkg/bin"
+      destination: "%RECIPE_CACHE_DIR%/pkg/usr/local/bin"
+    Processor: FileMover
+  - Arguments:
+      asset_regex: colima-Darwin-%ARCHITECTURE%
+      github_repo: abiosoft/colima
+    Processor: GitHubReleasesInfoProvider
+  - Arguments:
+      url: "%asset_url%"
+      download_dir: "%RECIPE_CACHE_DIR%/pkg/usr/local/bin"
+      filename: colima
+      request_headers:
+        Accept: application/octet-stream
+    Processor: URLDownloader
   - Arguments:
       pkg_request:
         pkgroot: "%RECIPE_CACHE_DIR%/pkg"
