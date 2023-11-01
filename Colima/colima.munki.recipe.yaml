@@ -12,6 +12,62 @@ Input:
       - "%ARCHITECTURE%"
     catalogs:
       - testing
+    postinstall_script: |
+      #!/bin/zsh
+
+      cat > /usr/local/bin/colimad <<-EOF
+      #!/bin/bash
+
+      export PATH="$PATH:/usr/local/bin"
+
+      function shutdown() {
+        colima stop
+        exit 0
+      }
+
+      trap shutdown SIGTERM
+      trap shutdown SIGINT
+
+      # wait until colima is running
+      while true; do
+        colima status &>/dev/null
+        if [[ \$? -eq 0 ]]; then
+          break;
+        fi
+
+        colima start
+        sleep 5
+      done
+
+      tail -f /dev/null &
+      wait \$!
+      EOF
+
+      cat > /Library/LaunchAgents/com.github.abiosoft.colima.plist <<-EOF
+      <?xml version="1.0" encoding="UTF-8"?>
+      <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+      <plist version="1.0">
+        <dict>
+          <key>Label</key>
+          <string>com.github.abiosoft.colima</string>
+          <key>Program</key>
+          <string>/usr/local/bin/colimad</string>
+          <key>RunAtLoad</key>
+          <true/>
+          <key>KeepAlive</key>
+          <false/>
+        </dict>
+      </plist>
+      EOF
+
+      /usr/sbin/chown root:wheel /Library/LaunchAgents/com.github.abiosoft.colima.plist
+      /usr/sbin/chown root:wheel /usr/local/bin/colimad
+
+      /bin/chmod 644 /Library/LaunchAgents/com.github.abiosoft.colima.plist
+      /bin/chmod 755 /usr/local/bin/colimad
+
+      /bin/launchctl load -w /Library/LaunchAgents/com.github.abiosoft.colima.plist
+      exit 0
     postuninstall_script: |
       #!/bin/zsh
       /bin/launchctl unload -w /Library/LaunchAgents/com.github.abiosoft.colima.plist
