@@ -15,6 +15,7 @@ Process:
       pkgdirs:
         usr/local/bin: "777"
         Library/LaunchAgents: "777"
+        Library/Colima/scripts: "777"
     Processor: PkgRootCreator
   - Arguments:
       url: "%asset_url%"
@@ -41,7 +42,7 @@ Process:
         </plist>
     Processor: FileCreator
   - Arguments:
-      file_path: "%RECIPE_CACHE_DIR%/scripts/postinstall"
+      file_path: "%RECIPE_CACHE_DIR%/pkg/Library/Colima/scripts/postinstall"
       file_mode: "755"
       file_content: |
         #!/bin/zsh
@@ -65,6 +66,22 @@ Process:
           - path: usr/local/bin/colima
             user: root
             group: wheel
+            mode: "755"
+          - path: Library
+            user: root
+            owner: wheel
+            mode: "755"
+          - path: Library/Colima
+            user: root
+            owner: wheel
+            mode: "755"
+          - path: Library/Colima/scripts
+            user: root
+            owner: wheel
+            mode: "755"
+          - path: Library/Colima/scripts/postinstall
+            user: root
+            owner: wheel
             mode: "755"
           - path: Library/LaunchAgents
             user: root
