@@ -19,9 +19,11 @@ Process:
     Processor: GitHubReleasesInfoProvider
   - Arguments:
       url: "%asset_url%"
-      filename: "colima"
-      download_dir: "%RECIPE_CACHE_DIR%/pkg/usr/local/bin"
     Processor: URLDownloader
+  - Arguments:
+      source_path: "%pathname%"
+      destination_path: "%RECIPE_CACHE_DIR%/pkg/usr/local/bin/colima"
+      overwrite: true
   - Arguments:
       file_path: "%RECIPE_CACHE_DIR%/pkg/Library/LaunchAgents/com.github.abiosoft.colima.plist"
       file_mode: "644"
