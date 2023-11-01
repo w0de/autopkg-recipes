@@ -25,7 +25,7 @@ Process:
       skip_payload: true
       destination_path: "%RECIPE_CACHE_DIR%/pkg"
       purge_destination: false
-    Processor: PkgExtractor
+    Processor: FlatPkgUnpacker
   - Arguments:
       source: "%RECIPE_CACHE_DIR%/pkg/share"
       destination: "%RECIPE_CACHE_DIR%/pkg/usr/share"
