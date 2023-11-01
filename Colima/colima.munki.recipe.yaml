@@ -14,7 +14,6 @@ Input:
       - testing
     postuninstall_script: |
       #!/bin/zsh
-
       /bin/launchctl unload -w /Library/LaunchAgents/com.github.abiosoft.colima.plist
       exit 0
 ParentRecipe: com.github.w0de.download.colima

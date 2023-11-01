@@ -11,12 +11,18 @@ Process:
       github_repo: abiosoft/colima
     Processor: GitHubReleasesInfoProvider
   - Arguments:
+      pkgroot: "%RECIPE_CACHE_DIR%/pkg"
+      pkgdirs:
+        usr/local/bin: "0666"
+        Library/LaunchAgents: "755"
+    Processor: PkgRootCreator
+  - Arguments:
       url: "%asset_url%"
       filename: "colima"
-      download_dir: "%RECIPE_CACHE_DIR%/colima-raw/usr/local/bin"
+      download_dir: "%RECIPE_CACHE_DIR%/pkg/usr/local/bin"
     Processor: URLDownloader
   - Arguments:
-      file_path: "%RECIPE_CACHE_DIR%/colima-raw/Library/LaunchAgents/com.github.abiosoft.colima.plist"
+      file_path: "%RECIPE_CACHE_DIR%/pkg/Library/LaunchAgents/com.github.abiosoft.colima.plist"
       file_mode: "644"
       file_content: |
         <?xml version="1.0" encoding="UTF-8"?>
@@ -35,25 +41,24 @@ Process:
         </plist>
     Processor: FileCreator
   - Arguments:
-      file_path: "%RECIPE_CACHE_DIR%/colima-scripts/postinstall"
+      file_path: "%RECIPE_CACHE_DIR%/scripts/postinstall"
       file_mode: "755"
       file_content: |
         #!/bin/zsh
-
         /bin/launchctl load -w /Library/LaunchAgents/com.github.abiosoft.colima.plist
         exit 0
     Processor: FileCreator
   - Arguments:
       pkg_request:
-        pkgroot: "%RECIPE_CACHE_DIR%/colima-raw"
+        pkgroot: "%RECIPE_CACHE_DIR%/pkg"
         pkgdir: "%RECIPE_CACHE_DIR%"
         pkgname: "colima-Darwin-%ARCHITECTURE%-%version%.pkg"
         pkgtype: flat
         id: com.github.abiosoft.colima
         version: "%version%"
-        scripts: "%RECIPE_CACHE_DIR%/colima-scripts"
+        scripts: "%RECIPE_CACHE_DIR%/scripts"
         chown:
-          - path: "usr/local/bin/colima"
+          - path: usr/local/bin/colima
             user: root
             group: wheel
             mode: "755"
