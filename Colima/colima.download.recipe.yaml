@@ -69,19 +69,19 @@ Process:
             mode: "755"
           - path: Library
             user: root
-            owner: wheel
+            group: wheel
             mode: "755"
           - path: Library/Colima
             user: root
-            owner: wheel
+            group: wheel
             mode: "755"
           - path: Library/Colima/scripts
             user: root
-            owner: wheel
+            group: wheel
             mode: "755"
           - path: Library/Colima/scripts/postinstall
             user: root
-            owner: wheel
+            group: wheel
             mode: "755"
           - path: Library/LaunchAgents
             user: root
