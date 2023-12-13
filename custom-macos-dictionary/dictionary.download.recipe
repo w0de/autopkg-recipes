@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>A custom dictionary.</string>
+	<key>Identifier</key>
+	<string>com.github.w0de.download.dictionary</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>dictionary</string>
+		<key>GITHUB_REPO</key>
+		<string></string>
+		<key>DMG_NAME</key>
+		<string>dictionary</string>
+	</dict>
+	<key>MiniumumVersion</key>
+	<string>1.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>GitHubReleasesInfoProvider</string>
+			<key>Arguments</key>
+			<dict>
+				<key>asset_regex</key>
+				<string>.*\.dmg</string>
+				<key>github_repo</key>
+				<string>%GITHUB_REPO%</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%asset_url%</string>
+				<key>filename</key>
+				<string>%DMG_NAME%-v%version%.dmg</string>
+				<key>request_headers</key>
+				<dict>
+					<key>Authorization</key>
+					<string>token %GITHUB_TOKEN%</string>
+					<key>Accept</key>
+					<string>application/octet-stream</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
