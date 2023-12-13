@@ -28,6 +28,8 @@
 				<string>.*\.dmg</string>
 				<key>github_repo</key>
 				<string>%GITHUB_REPO%</string>
+				<key>include_prereleases</key>
+				<string>True</string>
 			</dict>
 		</dict>
 		<dict>
