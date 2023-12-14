@@ -14,6 +14,8 @@
 		<string></string>
 		<key>DMG_NAME</key>
 		<string>dictionary</string>
+		<key>DICTIONARY_PATH</key>
+		<string>Dictionaries/Custom.dictionary</string>
 	</dict>
 	<key>MiniumumVersion</key>
 	<string>1.0</string>
