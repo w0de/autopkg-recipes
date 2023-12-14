@@ -30,6 +30,12 @@
 			<array>
 				<string>testing</string>
 			</array>
+			<key>preinstall_script</key>
+			<string>#!/bin/zsh
+if ! test -d /Library/Dictionaries; then
+  mkdir /Library/Dictionaries
+fi
+			</string>
 		</dict>
 	</dict>
 	<key>MiniumumVersion</key>
