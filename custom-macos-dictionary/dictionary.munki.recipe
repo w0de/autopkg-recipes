@@ -63,8 +63,8 @@ fi
 				<string>%pathname%</string>
 				<key>additional_makepkginfo_options</key>
 				<array>
-					<string>--item="%DICTIONARY_PATH%"</string>
-					<string>--destinationpath="/Library/Dictionaries"</string>
+					<string>--item=%DICTIONARY_PATH%</string>
+					<string>--destinationpath=/Library/Dictionaries</string>
 				</array>
 			</dict>
 			<key>Processor</key>
