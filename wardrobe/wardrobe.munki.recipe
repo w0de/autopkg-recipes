@@ -76,7 +76,7 @@
 				<key>version_comparison_key</key>
 				<string>CFBundleShortVersionString</string>
 				<key>pkg_path</key>
-				<string>%pathname%</string>
+				<string>%pkg_path%</string>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
