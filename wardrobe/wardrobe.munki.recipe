@@ -55,20 +55,22 @@
 					<key>description</key>
 					<string>Version %version%</string>
 					<key>installs</key>
-					<dict>
-						<key>CFBundleIdentifier</key>
-						<string>com.indigofaire.Wardrobe</string>
-						<key>CFBundleName</key>
-						<string>Wardrobe</string>
-						<key>CFBundleShortVersionString</key>
-						<string>%version%</string>
-						<key>path</key>
-						<string>/Applications/Wardrobe.app</string>
-						<key>type</key>
-						<string>application</string>
-						<key>version_comparison_key</key>
-						<string>CFBundleShortVersionString</string>
-					</dict>
+					<array>
+						<dict>
+							<key>CFBundleIdentifier</key>
+							<string>com.indigofaire.Wardrobe</string>
+							<key>CFBundleName</key>
+							<string>Wardrobe</string>
+							<key>CFBundleShortVersionString</key>
+							<string>%version%</string>
+							<key>path</key>
+							<string>/Applications/Wardrobe.app</string>
+							<key>type</key>
+							<string>application</string>
+							<key>version_comparison_key</key>
+							<string>CFBundleShortVersionString</string>
+						</dict>
+					</array>
 				</dict>
 			</dict>
 			<key>Processor</key>
