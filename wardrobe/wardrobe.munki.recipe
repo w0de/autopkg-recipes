@@ -33,12 +33,18 @@
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+			<key>Arguments</key>
+			<dict></dict>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>additional_pkginfo</key>
 				<dict>
 					<key>description</key>
-					<string>%release_notes%</string>
+					<string>Version %version%</string>
 				</dict>
 			</dict>
 			<key>Processor</key>
@@ -50,7 +56,7 @@
 				<key>additional_pkginfo</key>
 				<dict>
 					<key>description</key>
-					<string>%release_notes%\n%app_pkg_creator_summary_result%</string>
+					<string>%app_pkg_creator_summary_result%</string>
 				</dict>
 			</dict>
 			<key>Processor</key>
