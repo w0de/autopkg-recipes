@@ -39,6 +39,15 @@
 			<dict></dict>
 		</dict>
 		<dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%RECIPE_CACHE_DIR%/wardrobe/Wardrobe.app/Contents/Info.plist</string>
+			</dict>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>additional_pkginfo</key>
@@ -53,11 +62,8 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>additional_pkginfo</key>
-				<dict>
-					<key>description</key>
-					<string>%app_pkg_creator_summary_result%</string>
-				</dict>
+				<key>app_path</key>
+				<string>%RECIPE_CACHE_DIR%/wardrobe/Wardrobe.app</string>
 			</dict>
 			<key>Processor</key>
 			<string>AppPkgCreator</string>
