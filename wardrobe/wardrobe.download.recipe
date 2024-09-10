@@ -17,17 +17,6 @@
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>GitHubReleasesInfoProvider</string>
-			<key>Arguments</key>
-			<dict>
-				<key>asset_regex</key>
-				<string>.*\.zip</string>
-				<key>github_repo</key>
-				<string>faire/wardrobe-releases</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
 			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
