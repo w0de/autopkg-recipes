@@ -53,7 +53,7 @@
 				<key>additional_pkginfo</key>
 				<dict>
 					<key>description</key>
-					<string>Version %version%</string>
+					<string>%release_notes%</string>
 					<key>installs</key>
 					<array>
 						<dict>
